@@ -1,10 +1,9 @@
-function ()
-	
-file = io.open("input1.txt")
+file = io.open("input2.txt")
 
 io.input(file)
 
 res = 0
+total = 0
 words = {}
 left = {}
 right = {}
@@ -26,13 +25,16 @@ table.sort(left)
 table.sort(right)
 
 for i, v in ipairs(left) do
-	if left[i] <= right[i] then
-		diff = right[i] - left[i]
-	else
-		diff = left[i] - right[i]
-	end
-	res = res + diff
-end
+	total = 0
+	for j, k in ipairs(right) do
+		if left[i] == right[j] then
+			print("left: ", left[i], "right:", right[j])
 
-print(res)
+			total = total + 1
+			print("total:", total)
+		end
+	end
+	times = total * left[i]
+	res = res + times
 end
+print(res)
